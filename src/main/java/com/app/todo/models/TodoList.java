@@ -1,15 +1,13 @@
 package com.app.todo.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @Getter
 @Setter
 @Entity
+@RequiredArgsConstructor
 @Table(name = "items")
 public class TodoList {
     @Id
@@ -20,4 +18,8 @@ public class TodoList {
     private String title;
     @NonNull
     private String description;
+
+    public TodoList() {
+
+    }
 }
