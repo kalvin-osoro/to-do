@@ -43,8 +43,7 @@ public class TodoListServiceImpl implements TodoListService {
         todoList.setTitle(addItemRequest.getTitle());
         todoList.setDescription(addItemRequest.getDescription());
 
-        todoListRepository.save(todoList);
+       return todoListRepository.save(todoList);
 
-        return ResponseEntity.ok(new MessageResponse("Item added successfully!"));
     }
 }

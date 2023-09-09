@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @Entity
 @RequiredArgsConstructor
-@Table(name = "items")
+@Table(name = "todo-items")
 public class TodoList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

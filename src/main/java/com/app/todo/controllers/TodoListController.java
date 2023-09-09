@@ -11,9 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/item")
+@RequestMapping("/items")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class TodoListController {
@@ -27,15 +28,48 @@ public class TodoListController {
         return new ResponseEntity<>(todoList,HttpStatus.OK);
     }
 
-
     @PostMapping("/add-item")
     public ResponseEntity<?> addItem(@RequestBody AddItemRequest addItemRequest) {
+        try {
+            // Call the service to add the item to the database
+            TodoList todoList = (TodoList) todoListService.addItem(addItemRequest);
 
-        MessageResponse response = (MessageResponse) todoListService.addItem(addItemRequest);
-        return ResponseEntity.ok(response);
+            // Construct a success response with the TodoList
+            MessageResponse response = new MessageResponse("Item added successfully!");
 
-
+            // Return a success response with the TodoList
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(response);
+        } catch (Exception e) {
+            // Handle any exceptions and return an error response
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Failed to add item: " + e.getMessage()));
+        }
 
     }
+
+    @GetMapping("/get-item/{id}")
+    public ResponseEntity<?> getItemById(@PathVariable Long id) {
+        try {
+            // Call the service to retrieve the item by ID
+            Optional<TodoList> todoList = todoListService.getItem(id);
+
+            if (todoList.isPresent()) {
+                // Return a success response with the found TodoList
+                return ResponseEntity.ok(todoList.get());
+            } else {
+                // Return a not found response if the item is not present
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(new MessageResponse("Item with ID " + id + " not found"));
+            }
+        } catch (Exception e) {
+            // Handle any exceptions and return an error response
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Failed to retrieve item: " + e.getMessage()));
+        }
+    }
+
+
+
 
 }
