@@ -3,6 +3,7 @@ package com.app.todo.controllers;
 import com.app.todo.models.TodoList;
 import com.app.todo.payload.request.AddItemRequest;
 import com.app.todo.payload.response.MessageResponse;
+import com.app.todo.repository.TodoListRepository;
 import com.app.todo.services.TodoListService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class TodoListController {
 
     private final TodoListService todoListService;
+    private final TodoListRepository todoListRepository;
 
 //   get all items
     @GetMapping("/")
@@ -30,6 +32,10 @@ public class TodoListController {
 
     @PostMapping("/add-item")
     public ResponseEntity<?> addItem(@RequestBody AddItemRequest addItemRequest) {
+
+        if (todoListRepository.existsByTitle(addItemRequest.getTitle())) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: Item already exists!"));
+        }
         try {
             // Call the service to add the item to the database
             TodoList todoList = (TodoList) todoListService.addItem(addItemRequest);

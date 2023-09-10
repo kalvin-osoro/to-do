@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface TodoListRepository extends JpaRepository<TodoList, Long> {
 
     Optional<TodoList> findById(Long id);
+
+    Boolean existsByTitle(String title);
 }
