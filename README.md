@@ -10,13 +10,11 @@ This repository contains a Spring Boot application that you can run locally. Fol
 Before you begin, ensure you have met the following requirements:
 
 - **Java Development Kit (JDK):** Install a compatible version of JDK (Java 17 has been used for this project).
-- **Git:** Install Git on your local machine.
 - **Maven:** Make sure you have Apache Maven installed.
 
 ## Clone the Repository
 
 1. Clone this repository to your local machine using Git:
-
 
    ```shell
    git clone https://github.com/kalvin-osoro/to-do.git
@@ -30,6 +28,8 @@ Before you begin, ensure you have met the following requirements:
 3. Run the application
    ```shell
    mvn to-do:run
+
+   Alternatively once you have cloned the application, you can open it in your preffered IDE i.e Intellij and run the application   
 
 
 The application will start locally, and you can access it at http://localhost:8080.
