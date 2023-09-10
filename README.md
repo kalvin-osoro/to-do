@@ -48,9 +48,9 @@ You can test the APIs using Postman
 ### 2.  Retrieve a list of all to-do items.
   http://localhost:8080/items/
 ### 3. Retrieve a single to-do item by its unique identifier.
-   http://localhost:8080/items/update/2
+   http://localhost:8080/items/get-item/1
 ### 4.  Update a to-do item's title and/or description.
-
+   http://localhost:8080/items/update/4
 ### 5. Delete a to-do item.
    http://localhost:8080/items/delete/5
    
