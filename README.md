@@ -17,7 +17,24 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone this repository to your local machine using Git:
 
+
    ```shell
    git clone https://github.com/kalvin-osoro/to-do.git
+
+## Build and Run the application
+
+1. Navigate to the project directory
+2. Build the application using maven
+   ```shell
+   mvn clean install
+3. Run the application
+   ```shell
+   mvn to-do:run
+
+
+The application will start locally, and you can access it at http://localhost:8080.
+
+
+
 
    
