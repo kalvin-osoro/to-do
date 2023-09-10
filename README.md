@@ -33,14 +33,21 @@ Before you begin, ensure you have met the following requirements:
 
 
 The application will start locally, and you can access it at http://localhost:8080.
+You can test the APIs using Postman
 
 # testing the API endpoints:
 
-## 1. Create a new to-do item with a title and description.
+### 1. Create a new to-do item with a title and description.
    http://localhost:8080/items/add-item
-## 2.  Retrieve a list of all to-do items.
+### 2.  Retrieve a list of all to-do items.
   http://localhost:8080/items/
-## 3. Retrieve a single to-do item by its unique identifier.
+### 3. Retrieve a single to-do item by its unique identifier.
+   http://localhost:8080/items/update/2
+### 4.  Update a to-do item's title and/or description.
+
+### 5. Delete a to-do item.
+   http://localhost:8080/items/delete/5
+   
    
 
 
