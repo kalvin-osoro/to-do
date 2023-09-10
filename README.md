@@ -34,6 +34,11 @@ Before you begin, ensure you have met the following requirements:
 
 The application will start locally, and you can access it at http://localhost:8080.
 
+# testing the API endpoints:
+1.  Retrieve a list of all to-do items.
+   ** The quick brown fox jumps over the lazy dog. **
+
+
 
 
 
