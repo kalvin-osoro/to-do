@@ -20,8 +20,8 @@ Before you begin, ensure you have met the following requirements:
    git clone https://github.com/kalvin-osoro/to-do.git
 
 ## Set up a MySQL Database with the name items on you local machine and configure the applications.yml file to connect with it
-edit the username and password fields in application.yml file to match your database credentials
-Start the MySQL server
+1. edit the username and password fields in application.yml file to match your database credentials
+2. Start the MySQL server
 
 ## Build and Run the application
 
