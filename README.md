@@ -33,7 +33,7 @@ Before you begin, ensure you have met the following requirements:
 The application will start locally, and you can access it at http://localhost:8080.
 You can test the APIs using Postman
 
-#### Alternatively once you have cloned the application, you can open it in your preffered IDE i.e Intellij and run the application   
+#### Alternatively once you have cloned the application, you can open it in your preferred IDE i.e Intellij and run the application   
 
 
 
