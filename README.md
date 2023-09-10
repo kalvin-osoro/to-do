@@ -1,4 +1,4 @@
-"# to-do" 
+# to-do
 
 
 # Spring Boot Application
@@ -9,7 +9,7 @@ This repository contains a Spring Boot application that you can run locally. Fol
 
 Before you begin, ensure you have met the following requirements:
 
-- **Java Development Kit (JDK):** Install a compatible version of JDK (Java 8, 11, or later).
+- **Java Development Kit (JDK):** Install a compatible version of JDK (Java 17 has been used for this project).
 - **Git:** Install Git on your local machine.
 - **Maven:** Make sure you have Apache Maven installed.
 
@@ -18,4 +18,6 @@ Before you begin, ensure you have met the following requirements:
 1. Clone this repository to your local machine using Git:
 
    ```shell
-   git clone https://github.com/your-username/spring-boot-app.git
+   git clone https://github.com/kalvin-osoro/to-do.git
+
+   
