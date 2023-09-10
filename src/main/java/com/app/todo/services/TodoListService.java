@@ -12,4 +12,9 @@ public interface TodoListService {
 
     Optional<TodoList> getItem(Long id);
     public Object addItem(AddItemRequest addItemRequest);
+
+    TodoList editProduct(Long productId, AddItemRequest addItemRequest) throws Exception;
+
+    void deteleItem(Long id);
+
 }

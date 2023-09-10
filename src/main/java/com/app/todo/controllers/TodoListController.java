@@ -30,6 +30,28 @@ public class TodoListController {
         return new ResponseEntity<>(todoList,HttpStatus.OK);
     }
 
+    //    get item with id
+    @GetMapping("/get-item/{id}")
+    public ResponseEntity<?> getItemById(@PathVariable Long id) {
+        try {
+            // Call the service to retrieve the item by ID
+            Optional<TodoList> todoList = todoListService.getItem(id);
+
+            if (todoList.isPresent()) {
+                // Return a success response with the found TodoList
+                return ResponseEntity.ok(todoList.get());
+            } else {
+                // Return a not found response if the item is not present
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(new MessageResponse("Item with ID " + id + " not found"));
+            }
+        } catch (Exception e) {
+            // Handle any exceptions and return an error response
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Failed to retrieve item: " + e.getMessage()));
+        }
+    }
+
     @PostMapping("/add-item")
     public ResponseEntity<?> addItem(@RequestBody AddItemRequest addItemRequest) {
 
@@ -54,28 +76,66 @@ public class TodoListController {
 
     }
 
-    @GetMapping("/get-item/{id}")
-    public ResponseEntity<?> getItemById(@PathVariable Long id) {
+    @PostMapping("/update/{itemId}")
+    public ResponseEntity<?> editItem(@PathVariable("itemId") Long itemId,
+                                      @RequestBody AddItemRequest addItemRequest) throws Exception {
+
         try {
+
             // Call the service to retrieve the item by ID
-            Optional<TodoList> todoList = todoListService.getItem(id);
+            Optional<TodoList> todoList = todoListService.getItem(itemId);
 
             if (todoList.isPresent()) {
-                // Return a success response with the found TodoList
-                return ResponseEntity.ok(todoList.get());
+
+                TodoList todoList1 = todoListService.editProduct(itemId, addItemRequest);
+
+                MessageResponse response = new MessageResponse("Item with id "+ itemId + " updated successfully!");
+
+                return ResponseEntity.status(HttpStatus.OK).body(response);
+
             } else {
-                // Return a not found response if the item is not present
                 return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body(new MessageResponse("Item with ID " + id + " not found"));
+                        .body(new MessageResponse("Item with ID " + itemId + " does not exist found"));
             }
+
+//            TodoList todoList = todoListService.editProduct(itemId, addItemRequest);
+//
+//            MessageResponse response = new MessageResponse("Item with id "+ itemId + " updated successfully!");
+//
+//            return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
-            // Handle any exceptions and return an error response
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new MessageResponse("Failed to retrieve item: " + e.getMessage()));
+                    .body(new MessageResponse("Failed to update item!"));
         }
     }
 
+    @DeleteMapping("/delete/{itemId}")
+    public ResponseEntity<?> deleteItem(@PathVariable ("itemId") Long itemId) {
 
+        try {
+            // Call the service to retrieve the item by ID
+            Optional<TodoList> todoList = todoListService.getItem(itemId);
 
+            if (todoList.isPresent()) {
+                // Return a success response with the found TodoList
 
+                todoListService.deteleItem(itemId);
+
+                return new ResponseEntity<>(new MessageResponse("Item with id "+ itemId +  " has been deleted"), HttpStatus.OK);
+
+            } else {
+                // Return a not found response if the item is not present
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(new MessageResponse("Item with ID " + itemId + " not found"));
+            }
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Failed to update item!"));
+        }
+
+//        todoListService.deteleItem(itemId);
+
+//        return new ResponseEntity<>(new MessageResponse("Item with id "+ itemId +  " has been deleted"), HttpStatus.OK);
+    }
 }
