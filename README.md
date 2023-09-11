@@ -35,13 +35,14 @@ Before you begin, ensure you have met the following requirements:
 
    
 The application will start locally, and you can access it at http://localhost:8080.
-You can test the APIs using Postman
 
 #### Alternatively once you have cloned the application, you can open it in your preferred IDE i.e Intellij and run the application   
 
 
 
 # testing the API endpoints:
+You can test the APIs using Postman
+
 
 ### 1. Create a new to-do item with a title and description.
    http://localhost:8080/items/add-item
