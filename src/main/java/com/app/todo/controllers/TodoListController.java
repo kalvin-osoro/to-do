@@ -6,6 +6,7 @@ import com.app.todo.payload.response.MessageResponse;
 import com.app.todo.repository.TodoListRepository;
 import com.app.todo.services.TodoListService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+//import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @RequestMapping("/items")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
+//@Api(tags = "TodoList Controller", description = "API endpoints for the TodoList controller")
 public class TodoListController {
 
     private final TodoListService todoListService;
@@ -80,6 +82,10 @@ public class TodoListController {
     public ResponseEntity<?> editItem(@PathVariable("itemId") Long itemId,
                                       @RequestBody AddItemRequest addItemRequest) throws Exception {
 
+//        if (todoListRepository.existsByTitle(addItemRequest.getTitle())) {
+//            return ResponseEntity.badRequest().body(new MessageResponse("Error: Item already exists!"));
+//        }
+
         try {
 
             // Call the service to retrieve the item by ID
@@ -98,11 +104,6 @@ public class TodoListController {
                         .body(new MessageResponse("Item with ID " + itemId + " does not exist found"));
             }
 
-//            TodoList todoList = todoListService.editProduct(itemId, addItemRequest);
-//
-//            MessageResponse response = new MessageResponse("Item with id "+ itemId + " updated successfully!");
-//
-//            return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new MessageResponse("Failed to update item!"));
@@ -134,8 +135,5 @@ public class TodoListController {
                     .body(new MessageResponse("Failed to update item!"));
         }
 
-//        todoListService.deteleItem(itemId);
-
-//        return new ResponseEntity<>(new MessageResponse("Item with id "+ itemId +  " has been deleted"), HttpStatus.OK);
-    }
+     }
 }
