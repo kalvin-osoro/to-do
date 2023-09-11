@@ -41,7 +41,8 @@ The application will start locally, and you can access it at http://localhost:80
 
 
 # testing the API endpoints:
-You can test the APIs using Postman
+##  You can test the APIs using: 
+## 1. Postman
 
 
 ### 1. Create a new to-do item with a title and description.
@@ -55,7 +56,11 @@ You can test the APIs using Postman
 ### 5. Delete a to-do item.
    http://localhost:8080/items/delete/5
    
-   
+## 2. Swagger-ui
+
+Access swagger-ui using the url
+```shell
+http://localhost:8080/swagger-ui/index.html
 
 
 
