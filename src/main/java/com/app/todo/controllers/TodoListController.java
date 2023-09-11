@@ -5,8 +5,6 @@ import com.app.todo.payload.request.AddItemRequest;
 import com.app.todo.payload.response.MessageResponse;
 import com.app.todo.repository.TodoListRepository;
 import com.app.todo.services.TodoListService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-//import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +17,6 @@ import java.util.Optional;
 @RequestMapping("/items")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
-//@Api(tags = "TodoList Controller", description = "API endpoints for the TodoList controller")
 public class TodoListController {
 
     private final TodoListService todoListService;
